@@ -11,6 +11,7 @@ import { flowRight, pick } from 'lodash';
 import Button from 'components/button';
 import Card from 'components/card';
 import CommentDisplaySettings from './comment-display-settings';
+import CommentMarkdownToggle from './comment-markdown-toggle';
 import FormFieldset from 'components/forms/form-fieldset';
 import FormLabel from 'components/forms/form-label';
 import FormLegend from 'components/forms/form-legend';
@@ -93,8 +94,13 @@ class SiteSettingsFormDiscussion extends Component {
 	}
 
 	otherCommentSettings() {
-		const { fields, handleToggle, isRequestingSettings, translate } = this.props;
-		const markdownSupported = fields.markdown_supported;
+		const {
+			fields,
+			handleToggle,
+			isRequestingSettings,
+			isSavingSettings,
+			translate
+		} = this.props;
 		return (
 			<FormFieldset className="site-settings__other-comment-settings">
 				<CompactFormToggle
@@ -160,31 +166,16 @@ class SiteSettingsFormDiscussion extends Component {
 						}
 					</span>
 				</CompactFormToggle>
-				{ markdownSupported &&
-					<CompactFormToggle
-						checked={ !! fields.wpcom_publish_comments_with_markdown }
-						disabled={ isRequestingSettings }
-						onChange={ handleToggle( 'wpcom_publish_comments_with_markdown' ) }>
-						<span>
-							{
-								translate( 'Enable Markdown for comments. {{a}}Learn more about markdown{{/a}}.', {
-									components: {
-										a: <a
-											href="http://en.support.wordpress.com/markdown-quick-reference/"
-											target="_blank"
-											rel="noopener noreferrer" />
-									}
-								} )
-							}
-						</span>
-					</CompactFormToggle>
-				}
 				<CompactFormToggle
 					checked={ 'asc' === fields.comment_order }
 					disabled={ isRequestingSettings }
 					onChange={ this.handleCommentOrder }>
 					<span>{ translate( 'Comments should be displayed with the older comments at the top of each page' ) }</span>
 				</CompactFormToggle>
+				<CommentMarkdownToggle
+					handleToggle={ handleToggle }
+					submittingForm={ isRequestingSettings || isSavingSettings }
+					fields={ fields } />
 			</FormFieldset>
 		);
 	}
