@@ -87,6 +87,7 @@
 		"post-editor-github-link": false,
 		"post-editor/media-advanced": true,
 		"post-editor/mentions": false,
+		"post-editor/video-editor": false,
 		"press-this": true,
 		"reader": true,
 		"reader/full-errors": true,

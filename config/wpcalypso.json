@@ -88,6 +88,7 @@
 		"post-editor/image-editor": true,
 		"post-editor/insert-menu": true,
 		"post-editor/mentions": true,
+		"post-editor/video-editor": true,
 		"press-this": true,
 		"preview-layout": true,
 		"reader": true,
