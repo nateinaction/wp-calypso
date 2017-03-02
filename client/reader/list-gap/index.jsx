@@ -1,14 +1,14 @@
 /**
  * External Dependencies
  */
-var React = require( 'react' ),
-	classnames = require( 'classnames' );
+import React from 'react';
+import classnames from 'classnames';
 
 /**
  * Internal Dependencies
  */
-var FeedStreamStoreActions = require( 'lib/feed-stream-store/actions' ),
-	stats = require( 'reader/stats' );
+import FeedStreamStoreActions from 'lib/feed-stream-store/actions';
+import stats from 'reader/stats';
 
 var Gap = React.createClass( {
 

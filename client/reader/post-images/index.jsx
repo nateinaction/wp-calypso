@@ -1,18 +1,18 @@
 /**
  * External dependencies
  */
-var ReactDom = require( 'react-dom' ),
-	React = require( 'react' ),
-	PureRenderMixin = require( 'react-pure-render/mixin' ),
-	resizeImageUrl = require( 'lib/resize-image-url' ),
-	domScrollIntoView = require( 'dom-scroll-into-view' ),
-	ReactCSSTransitionGroup = require( 'react-addons-css-transition-group' );
+import ReactDom from 'react-dom';
+import React from 'react';
+import PureRenderMixin from 'react-pure-render/mixin';
+import resizeImageUrl from 'lib/resize-image-url';
+import domScrollIntoView from 'dom-scroll-into-view';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 /**
  * Internal dependencies
  */
-var stats = require( 'reader/stats' ),
-	viewport = require( 'lib/viewport' );
+import stats from 'reader/stats';
+import viewport from 'lib/viewport';
 
 var PostImages = React.createClass( {
 

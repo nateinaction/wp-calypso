@@ -1,19 +1,19 @@
-var React = require( 'react' ),
-	url = require( 'url' ),
-	defer = require( 'lodash/defer' ),
-	config = require( 'config' ),
-	classnames = require( 'classnames' ),
-	qs = require( 'qs' ),
-	page = require( 'page' );
+import React from 'react';
+import url from 'url';
+import defer from 'lodash/defer';
+import config from 'config';
+import classnames from 'classnames';
+import qs from 'qs';
+import page from 'page';
 import SocialLogo from 'social-logos';
 
-var PopoverMenu = require( 'components/popover/menu' ),
-	PopoverMenuItem = require( 'components/popover/menu-item' ),
-	Gridicon = require( 'gridicons' ),
-	sitesList = require( 'lib/sites-list' )(),
-	stats = require( 'reader/stats' ),
-	SitesPopover = require( 'components/sites-popover' ),
-	sections = require( 'sections-preload' );
+import PopoverMenu from 'components/popover/menu';
+import PopoverMenuItem from 'components/popover/menu-item';
+import Gridicon from 'gridicons';
+const sitesList = require( 'lib/sites-list' )();
+import stats from 'reader/stats';
+import SitesPopover from 'components/sites-popover';
+import sections from 'sections-preload';
 
 var actionMap = {
 	twitter: function( post ) {
