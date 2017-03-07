@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
  */
 import Card from 'components/card';
 import DefaultPostFormat from './default-post-format';
+import JetpackMarkdown from './jetpack-markdown';
 import Markdown from './markdown';
 import AfterTheDeadline from './after-the-deadline';
 import { isJetpackSite, siteSupportsJetpackSettingsUi } from 'state/sites/selectors';
@@ -47,8 +48,13 @@ const Composing = ( {
 
 			{
 				siteIsJetpack && jetpackSettingsUISupported && (
+					<JetpackMarkdown />
+				)
+			}
+
+			{
+				siteIsJetpack && jetpackSettingsUISupported && (
 					<div>
-						<hr />
 						<AfterTheDeadline
 							handleToggle={ handleToggle }
 							setFieldValue={ setFieldValue }
