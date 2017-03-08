@@ -48,13 +48,8 @@ const Composing = ( {
 
 			{
 				siteIsJetpack && jetpackSettingsUISupported && (
-					<JetpackMarkdown />
-				)
-			}
-
-			{
-				siteIsJetpack && jetpackSettingsUISupported && (
 					<div>
+						<JetpackMarkdown />
 						<AfterTheDeadline
 							handleToggle={ handleToggle }
 							setFieldValue={ setFieldValue }
