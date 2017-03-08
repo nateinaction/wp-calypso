@@ -9,6 +9,7 @@ import { translate } from 'i18n-calypso';
 /**
  * Internal dependencies
  */
+import config from 'config';
 import Dialog from 'components/dialog';
 import PulsingDot from 'components/pulsing-dot';
 import { trackClick } from './helpers';
@@ -84,7 +85,7 @@ const ThanksModal = React.createClass( {
 		} );
 		return (
 			<ul>
-				{ themeSetup }
+				{ config.isEnabled( 'settings/theme-setup' ) && themeSetup }
 				<li>
 					{ this.props.source === 'list' ? features : customize }
 				</li>
