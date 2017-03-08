@@ -182,6 +182,7 @@ class AfterTheDeadline extends Component {
 		return (
 			<FormFieldset className="site-settings__has-divider is-top-only">
 				<QueryJetpackConnection siteId={ selectedSiteId } />
+
 				<div className="composing__info-link-container site-settings__info-link-container">
 					<InfoPopover position={ 'left' }>
 						<ExternalLink href={ 'https://jetpack.com/support/spelling-and-grammar/' } target="_blank">
