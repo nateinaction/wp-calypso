@@ -31,7 +31,7 @@ const JetpackMarkdown = ( {
 				<JetpackModuleToggle
 					siteId={ selectedSiteId }
 					moduleSlug="markdown"
-					label={ translate( 'Write posts or pages in plain text Markdown syntax.' ) }
+					label={ translate( 'Write posts or pages in plain text Markdown syntax' ) }
 					/>
 			</FormFieldset>
 		</div>
