@@ -9,6 +9,7 @@ import { translate } from 'i18n-calypso';
 /**
  * Internal dependencies
  */
+import config from 'config';
 import Dialog from 'components/dialog';
 import PulsingDot from 'components/pulsing-dot';
 import { trackClick } from './helpers';
@@ -66,14 +67,28 @@ const ThanksModal = React.createClass( {
 	renderBody() {
 		return (
 			<ul>
+				{ config.isEnabled( 'settings/theme-setup' ) && ! this.props.site.jetpack &&
+					<li>
+						{ this.renderThemeSetupInfo() }
+					</li>
+				}
 				<li>
 					{ this.props.source === 'list' ? this.renderThemeInfo() : this.renderCustomizeInfo() }
 				</li>
-			<li>
-				{ this.renderSupportInfo() }
-			</li>
+				<li>
+					{ this.renderSupportInfo() }
+				</li>
 			</ul>
 		);
+	},
+
+	renderThemeSetupInfo() {
+		return translate( 'Make your site look like the demo with {{a}}Theme Setup{{/a}}.', {
+			components: {
+				a: <a href={ this.props.themeSetupUrl }
+					onClick={ this.onLinkClick( 'setup' ) } />
+			}
+		} );
 	},
 
 	renderThemeInfo() {
