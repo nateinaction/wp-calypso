@@ -1,6 +1,9 @@
 module.exports = {
 	root: true,
-	'extends': 'wpcalypso/react',
+	'extends': [
+		'wpcalypso/react',
+		'wpcalypso/a11y'
+	],
 	parser: 'babel-eslint',
 	env: {
 		browser: true,
