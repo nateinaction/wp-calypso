@@ -9,7 +9,6 @@ import { translate } from 'i18n-calypso';
 /**
  * Internal dependencies
  */
-import config from 'config';
 import Dialog from 'components/dialog';
 import PulsingDot from 'components/pulsing-dot';
 import { trackClick } from './helpers';
@@ -18,8 +17,8 @@ import {
 	getCanonicalTheme,
 	getThemeDetailsUrl,
 	getThemeCustomizeUrl,
-	getThemeForumUrl,
 	getThemeSetupUrl,
+	getThemeForumUrl,
 	isActivatingTheme,
 	hasActivatedTheme,
 	isWpcomTheme
@@ -64,30 +63,11 @@ const ThanksModal = React.createClass( {
 		};
 	},
 
-	renderWpcomInfo() {
-		const themeSetup = this.props.site.jetpack ? null : translate( 'Make your site look like the demo with {{a}}Theme Setup{{/a}}.', {
-			components: {
-				a: <a href={ this.props.themeSetupUrl }
-					onClick={ this.onLinkClick( 'setup' ) } />
-			}
-		} );
-		const features = translate( "Discover this theme's {{a}}awesome features.{{/a}}", {
-			components: {
-				a: <a href={ this.props.detailsUrl }
-					onClick={ this.onLinkClick( 'features' ) } />
-			}
-		} );
-		const customize = translate( '{{a}}Customize{{/a}} this design.', {
-			components: {
-				a: <a href={ this.props.customizeUrl }
-					onClick={ this.onLinkClick( 'customize' ) } />
-			}
-		} );
+	renderBody() {
 		return (
 			<ul>
-				{ config.isEnabled( 'settings/theme-setup' ) && themeSetup }
 				<li>
-					{ this.props.source === 'list' ? features : customize }
+					{ this.props.source === 'list' ? this.renderThemeInfo() : this.renderCustomizeInfo() }
 				</li>
 			<li>
 				{ this.renderSupportInfo() }
