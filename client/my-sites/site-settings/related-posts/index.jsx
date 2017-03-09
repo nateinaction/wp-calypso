@@ -8,7 +8,6 @@ import { localize } from 'i18n-calypso';
  * Internal dependencies
  */
 import Card from 'components/card';
-import Button from 'components/button';
 import FormFieldset from 'components/forms/form-fieldset';
 import FormToggle from 'components/forms/form-toggle';
 import SectionHeader from 'components/section-header';
@@ -16,27 +15,13 @@ import RelatedContentPreview from './related-content-preview';
 
 const RelatedPosts = ( {
 	fields,
-	handleToggle,
+	handleAutosavingToggle,
 	isRequestingSettings,
-	isSavingSettings,
-	onSubmitForm,
 	translate
 } ) => {
 	return (
 		<div>
-			<SectionHeader label={ translate( 'Related Posts' ) }>
-				<Button
-					compact={ true }
-					onClick={ onSubmitForm }
-					primary={ true }
-					type="submit"
-					disabled={ isRequestingSettings || isSavingSettings }>
-						{ isSavingSettings
-							? translate( 'Saving…' )
-							: translate( 'Save Settings' )
-						}
-				</Button>
-			</SectionHeader>
+			<SectionHeader label={ translate( 'Related Posts' ) } />
 
 			<Card className="related-posts__card site-settings">
 				<FormFieldset>
@@ -44,7 +29,7 @@ const RelatedPosts = ( {
 						className="related-posts__settings-toggle is-compact"
 						checked={ !! fields.jetpack_relatedposts_enabled }
 						disabled={ isRequestingSettings }
-						onChange={ handleToggle( 'jetpack_relatedposts_enabled' ) }
+						onChange={ handleAutosavingToggle( 'jetpack_relatedposts_enabled' ) }
 					>
 						{ translate( 'Show related content after posts' ) }
 					</FormToggle>
@@ -54,7 +39,7 @@ const RelatedPosts = ( {
 							className="related-posts__settings-toggle is-compact"
 							checked={ !! fields.jetpack_relatedposts_show_headline }
 							disabled={ isRequestingSettings || ! fields.jetpack_relatedposts_enabled }
-							onChange={ handleToggle( 'jetpack_relatedposts_show_headline' ) }
+							onChange={ handleAutosavingToggle( 'jetpack_relatedposts_show_headline' ) }
 						>
 							{ translate(
 								'Show a "Related" header to more clearly separate the related section from posts'
@@ -65,7 +50,7 @@ const RelatedPosts = ( {
 							className="related-posts__settings-toggle is-compact"
 							checked={ !! fields.jetpack_relatedposts_show_thumbnails }
 							disabled={ isRequestingSettings || ! fields.jetpack_relatedposts_enabled }
-							onChange={ handleToggle( 'jetpack_relatedposts_show_thumbnails' ) }
+							onChange={ handleAutosavingToggle( 'jetpack_relatedposts_show_thumbnails' ) }
 						>
 							{ translate(
 								'Use a large and visually striking layout'
@@ -91,7 +76,7 @@ RelatedPosts.defaultProps = {
 
 RelatedPosts.propTypes = {
 	onSubmitForm: PropTypes.func.isRequired,
-	handleToggle: PropTypes.func.isRequired,
+	handleAutosavingToggle: PropTypes.func.isRequired,
 	isSavingSettings: PropTypes.bool,
 	isRequestingSettings: PropTypes.bool,
 	fields: PropTypes.object,
