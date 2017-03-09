@@ -39,28 +39,28 @@ class SiteSettingsFormDiscussion extends Component {
 	}
 
 	defaultArticleSettings() {
-		const { fields, handleToggle, isRequestingSettings, translate } = this.props;
+		const { fields, handleAutosavingToggle, isRequestingSettings, translate } = this.props;
 		return (
 			<FormFieldset>
 				<FormToggle
 					className="is-compact"
 					checked={ !! fields.default_pingback_flag }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'default_pingback_flag' ) }>
+					onChange={ handleAutosavingToggle( 'default_pingback_flag' ) }>
 					<span>{ translate( 'Attempt to notify any blogs linked to from the article' ) }</span>
 				</FormToggle>
 				<FormToggle
 					className="is-compact"
 					checked={ !! fields.default_ping_status }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'default_ping_status' ) }>
+					onChange={ handleAutosavingToggle( 'default_ping_status' ) }>
 					<span>{ translate( 'Allow link notifications from other blogs (pingbacks and trackbacks)' ) }</span>
 				</FormToggle>
 				<FormToggle
 					className="is-compact"
 					checked={ !! fields.default_comment_status }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'default_comment_status' ) }>
+					onChange={ handleAutosavingToggle( 'default_comment_status' ) }>
 					<span>{ translate( 'Allow people to post comments on new articles' ) }</span>
 				</FormToggle>
 				<FormSettingExplanation>
@@ -96,7 +96,7 @@ class SiteSettingsFormDiscussion extends Component {
 	}
 
 	otherCommentSettings() {
-		const { fields, handleToggle, isRequestingSettings, translate } = this.props;
+		const { fields, handleAutosavingToggle, isRequestingSettings, translate } = this.props;
 		const markdownSupported = fields.markdown_supported;
 		return (
 			<FormFieldset className="site-settings__other-comment-settings">
@@ -104,21 +104,21 @@ class SiteSettingsFormDiscussion extends Component {
 					className="is-compact"
 					checked={ !! fields.require_name_email }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'require_name_email' ) }>
+					onChange={ handleAutosavingToggle( 'require_name_email' ) }>
 					<span>{ translate( 'Comment author must fill out name and e-mail' ) }</span>
 				</FormToggle>
 				<FormToggle
 					className="is-compact"
 					checked={ !! fields.comment_registration }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'comment_registration' ) }>
+					onChange={ handleAutosavingToggle( 'comment_registration' ) }>
 					<span>{ translate( 'Users must be registered and logged in to comment' ) }</span>
 				</FormToggle>
 				<FormToggle
 					className="is-compact"
 					checked={ !! fields.close_comments_for_old_posts }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'close_comments_for_old_posts' ) }>
+					onChange={ handleAutosavingToggle( 'close_comments_for_old_posts' ) }>
 					<span>
 						{
 							translate(
@@ -137,7 +137,7 @@ class SiteSettingsFormDiscussion extends Component {
 					className="is-compact"
 					checked={ !! fields.thread_comments }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'thread_comments' ) }>
+					onChange={ handleAutosavingToggle( 'thread_comments' ) }>
 					<span>
 						{
 							translate( 'Enable threaded (nested) comments up to {{number /}} levels deep', {
@@ -152,7 +152,7 @@ class SiteSettingsFormDiscussion extends Component {
 					className="is-compact"
 					checked={ !! fields.page_comments }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'page_comments' ) }>
+					onChange={ handleAutosavingToggle( 'page_comments' ) }>
 					<span>
 						{
 							translate(
@@ -173,7 +173,7 @@ class SiteSettingsFormDiscussion extends Component {
 						className="is-compact"
 						checked={ !! fields.wpcom_publish_comments_with_markdown }
 						disabled={ isRequestingSettings }
-						onChange={ handleToggle( 'wpcom_publish_comments_with_markdown' ) }>
+						onChange={ handleAutosavingToggle( 'wpcom_publish_comments_with_markdown' ) }>
 						<span>
 							{
 								translate( 'Enable Markdown for comments. {{a}}Learn more about markdown{{/a}}.', {
@@ -271,7 +271,7 @@ class SiteSettingsFormDiscussion extends Component {
 	}
 
 	emailMeSettings() {
-		const { fields, handleToggle, isRequestingSettings, translate } = this.props;
+		const { fields, handleAutosavingToggle, isRequestingSettings, translate } = this.props;
 		return (
 			<FormFieldset>
 				<FormLegend>{ translate( 'E-mail me whenever' ) }</FormLegend>
@@ -279,14 +279,14 @@ class SiteSettingsFormDiscussion extends Component {
 					className="is-compact"
 					checked={ !! fields.comments_notify }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'comments_notify' ) }>
+					onChange={ handleAutosavingToggle( 'comments_notify' ) }>
 					<span>{ translate( 'Anyone posts a comment' ) }</span>
 				</FormToggle>
 				<FormToggle
 					className="is-compact"
 					checked={ !! fields.moderation_notify }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'moderation_notify' ) }>
+					onChange={ handleAutosavingToggle( 'moderation_notify' ) }>
 					<span>{ translate( 'A comment is held for moderation' ) }</span>
 				</FormToggle>
 				{ this.emailMeLikes() }
@@ -297,7 +297,7 @@ class SiteSettingsFormDiscussion extends Component {
 	}
 
 	emailMeLikes() {
-		const { fields, handleToggle, isJetpack, isLikesModuleActive, isRequestingSettings, translate } = this.props;
+		const { fields, handleAutosavingToggle, isJetpack, isLikesModuleActive, isRequestingSettings, translate } = this.props;
 		// likes are only supported on jetpack sites with the Likes module activated
 		if ( isJetpack && ! isLikesModuleActive ) {
 			return null;
@@ -308,14 +308,14 @@ class SiteSettingsFormDiscussion extends Component {
 				className="is-compact"
 				checked={ !! fields.social_notifications_like }
 				disabled={ isRequestingSettings }
-				onChange={ handleToggle( 'social_notifications_like' ) }>
+				onChange={ handleAutosavingToggle( 'social_notifications_like' ) }>
 				<span>{ translate( 'Someone likes one of my posts' ) }</span>
 			</FormToggle>
 		);
 	}
 
 	emailMeReblogs() {
-		const { fields, handleToggle, isJetpack, isRequestingSettings, translate } = this.props;
+		const { fields, handleAutosavingToggle, isJetpack, isRequestingSettings, translate } = this.props;
 		// reblogs are not supported on Jetpack sites
 		if ( isJetpack ) {
 			return null;
@@ -326,14 +326,14 @@ class SiteSettingsFormDiscussion extends Component {
 				className="is-compact"
 				checked={ !! fields.social_notifications_reblog }
 				disabled={ isRequestingSettings }
-				onChange={ handleToggle( 'social_notifications_reblog' ) }>
+				onChange={ handleAutosavingToggle( 'social_notifications_reblog' ) }>
 				<span>{ translate( 'Someone reblogs one of my posts' ) }</span>
 			</FormToggle>
 		);
 	}
 
 	emailMeFollows() {
-		const { fields, handleToggle, isJetpack, isRequestingSettings, translate } = this.props;
+		const { fields, handleAutosavingToggle, isJetpack, isRequestingSettings, translate } = this.props;
 		// follows are not supported on Jetpack sites
 		if ( isJetpack ) {
 			return null;
@@ -344,14 +344,14 @@ class SiteSettingsFormDiscussion extends Component {
 				className="is-compact"
 				checked={ !! fields.social_notifications_subscribe }
 				disabled={ isRequestingSettings }
-				onChange={ handleToggle( 'social_notifications_subscribe' ) }>
+				onChange={ handleAutosavingToggle( 'social_notifications_subscribe' ) }>
 				<span>{ translate( 'Someone follows my blog' ) }</span>
 			</FormToggle>
 		);
 	}
 
 	beforeCommentSettings() {
-		const { fields, handleToggle, isRequestingSettings, translate } = this.props;
+		const { fields, handleAutosavingToggle, isRequestingSettings, translate } = this.props;
 		return (
 			<FormFieldset>
 				<FormLegend>{ translate( 'Before a comment appears' ) }</FormLegend>
@@ -359,14 +359,14 @@ class SiteSettingsFormDiscussion extends Component {
 					className="is-compact"
 					checked={ !! fields.comment_moderation }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'comment_moderation' ) }>
+					onChange={ handleAutosavingToggle( 'comment_moderation' ) }>
 					<span>{ translate( 'Comment must be manually approved' ) }</span>
 				</FormToggle>
 				<FormToggle
 					className="is-compact"
 					checked={ !! fields.comment_whitelist }
 					disabled={ isRequestingSettings }
-					onChange={ handleToggle( 'comment_whitelist' ) }>
+					onChange={ handleAutosavingToggle( 'comment_whitelist' ) }>
 					<span>{ translate( 'Comment author must have a previously approved comment' ) }</span>
 				</FormToggle>
 			</FormFieldset>
@@ -479,18 +479,17 @@ class SiteSettingsFormDiscussion extends Component {
 		const {
 			fields,
 			handleSubmitForm,
-			handleToggle,
+			handleAutosavingToggle,
 			siteId,
 			isRequestingSettings,
 			isSavingSettings,
 			isJetpack,
-			isSubscriptionsModuleActive,
 			jetpackSettingsUISupported,
 			translate
 		} = this.props;
 		return (
 			<form id="site-settings" onSubmit={ handleSubmitForm }>
-				{ this.renderSectionHeader( translate( 'Default Article Settings' ) ) }
+				{ this.renderSectionHeader( translate( 'Default Article Settings' ), false ) }
 				<Card className="site-settings__discussion-settings">
 					{ this.defaultArticleSettings() }
 				</Card>
@@ -514,11 +513,11 @@ class SiteSettingsFormDiscussion extends Component {
 						<div>
 							<QueryJetpackModules siteId={ siteId } />
 
-							{ this.renderSectionHeader( translate( 'Subscriptions' ), isSubscriptionsModuleActive !== false ) }
+							{ this.renderSectionHeader( translate( 'Subscriptions' ), false ) }
 
 							<Subscriptions
 								onSubmitForm={ handleSubmitForm }
-								handleToggle={ handleToggle }
+								handleAutosavingToggle={ handleAutosavingToggle }
 								isSavingSettings={ isSavingSettings }
 								isRequestingSettings={ isRequestingSettings }
 								fields={ fields }

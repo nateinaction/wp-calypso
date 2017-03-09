@@ -24,7 +24,7 @@ import ExternalLink from 'components/external-link';
 
 const Subscriptions = ( {
 	fields,
-	handleToggle,
+	handleAutosavingToggle,
 	isRequestingSettings,
 	isSavingSettings,
 	moduleUnavailable,
@@ -59,7 +59,7 @@ const Subscriptions = ( {
 							className="subscriptions__module-settings-toggle is-compact"
 							checked={ !! fields.stb_enabled }
 							disabled={ isRequestingSettings || isSavingSettings || ! subscriptionsModuleActive || moduleUnavailable }
-							onChange={ handleToggle( 'stb_enabled' ) }
+							onChange={ handleAutosavingToggle( 'stb_enabled' ) }
 						>
 							{ translate( 'Show a "follow blog" option in the comment form' ) }
 						</FormToggle>
@@ -68,7 +68,7 @@ const Subscriptions = ( {
 							className="subscriptions__module-settings-toggle is-compact"
 							checked={ !! fields.stc_enabled }
 							disabled={ isRequestingSettings || isSavingSettings || ! subscriptionsModuleActive || moduleUnavailable }
-							onChange={ handleToggle( 'stc_enabled' ) }
+							onChange={ handleAutosavingToggle( 'stc_enabled' ) }
 						>
 							{ translate( 'Show a "follow comments" option in the comment form.' ) }
 						</FormToggle>
@@ -91,7 +91,7 @@ Subscriptions.defaultProps = {
 
 Subscriptions.propTypes = {
 	onSubmitForm: PropTypes.func.isRequired,
-	handleToggle: PropTypes.func.isRequired,
+	handleAutosavingToggle: PropTypes.func.isRequired,
 	isSavingSettings: PropTypes.bool,
 	isRequestingSettings: PropTypes.bool,
 	fields: PropTypes.object,
