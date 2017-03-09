@@ -19,22 +19,20 @@ const JetpackMarkdown = ( {
 	translate
 } ) => {
 	return (
-		<div className="composing__module-settings">
-			<FormFieldset className="composing__form-fieldset site-settings__has-divider">
-				<div className="composing__info-link-container site-settings__info-link-container">
-					<InfoPopover position={ 'left' }>
-						<ExternalLink href={ 'https://jetpack.com/support/markdown/' } target="_blank">
-							{ translate( 'Learn more about Markdown.' ) }
-						</ExternalLink>
-					</InfoPopover>
-				</div>
-				<JetpackModuleToggle
-					siteId={ selectedSiteId }
-					moduleSlug="markdown"
-					label={ translate( 'Write posts or pages in plain text Markdown syntax' ) }
-					/>
-			</FormFieldset>
-		</div>
+		<FormFieldset className="composing__form-fieldset site-settings__has-divider is-top-only">
+			<div className="composing__info-link-container site-settings__info-link-container">
+				<InfoPopover position={ 'left' }>
+					<ExternalLink href={ 'https://jetpack.com/support/markdown/' } target="_blank">
+						{ translate( 'Learn more about Markdown.' ) }
+					</ExternalLink>
+				</InfoPopover>
+			</div>
+			<JetpackModuleToggle
+				siteId={ selectedSiteId }
+				moduleSlug="markdown"
+				label={ translate( 'Write posts or pages in plain text Markdown syntax' ) }
+				/>
+		</FormFieldset>
 	);
 };
 
