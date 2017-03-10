@@ -24,7 +24,8 @@ var DEFAULT_FILES = [
 	'docs/coding-guidelines.md',
 	'docs/coding-guidelines/javascript.md',
 	'docs/coding-guidelines/css.md',
-	'docs/coding-guidelines/html.md'
+	'docs/coding-guidelines/html.md',
+	'docs/accessibility.md'
 ];
 
 /**
