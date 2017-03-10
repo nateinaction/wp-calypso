@@ -11,9 +11,11 @@ import page from 'page';
  */
 import LoginComponent from './login';
 import ConnectComponent from './connect';
+import RequestLoginEmailForm from './request-login-email-form';
 import * as OAuthToken from 'lib/oauth-token';
 import wpcom from 'lib/wp';
 import config from 'config';
+import { renderWithReduxStore } from 'lib/react-helpers';
 import store from 'store';
 import WPOAuth from 'wpcom-oauth';
 import userFactory from 'lib/user';
@@ -109,5 +111,16 @@ module.exports = {
 				window.location = '/';
 			}
 		} );
+	},
+
+	magicLoginRequestEmailForm: function( context ) {
+		renderWithReduxStore( (
+				<Main className="auth">
+					<RequestLoginEmailForm />
+				</Main>
+			),
+			document.getElementById( 'primary' ),
+			context.store
+		);
 	}
 };

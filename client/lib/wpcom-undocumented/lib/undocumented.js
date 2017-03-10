@@ -1591,6 +1591,15 @@ Undocumented.prototype.validateNewUser = function( data, fn ) {
 	return this.wpcom.req.post( '/signups/validation/user/', null, data, fn );
 };
 
+Undocumented.prototype.requestMagicLoginEmail = function( data, fn ) {
+	debug( '/auth/send-login-email' );
+
+	// Set client information
+	restrictByOauthKeys( data );
+
+	return this.wpcom.req.post( '/auth/send-login-email', null, data, fn );
+};
+
 /**
  * Create a new site
  *

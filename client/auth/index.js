@@ -15,4 +15,7 @@ module.exports = function() {
 		page( '/authorize', controller.authorize );
 		page( '/api/oauth/token', controller.getToken );
 	}
+	if ( config.isEnabled( 'magic-login-request' ) ) {
+		page( '/login/send-me-a-link', controller.magicLoginRequestEmailForm );
+	}
 };
