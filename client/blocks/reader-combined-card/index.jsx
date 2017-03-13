@@ -33,9 +33,22 @@ class ReaderCombinedCard extends React.Component {
 	}
 
 	componentDidMount() {
-		const { posts, site, feed } = this.props;
-		const feedId = get( feed, 'feed_ID' );
-		const siteId = get( site, 'ID' );
+		this.recordRenderTrack();
+	}
+
+	componentDidUpdate( nextProps ) {
+		if ( size( this.props.posts ) !== size( nextProps.posts ) ) {
+			this.recordRenderTrack();
+		}
+	}
+
+	recordRenderTrack = () => {
+		const { posts } = this.props;
+
+		// Use site ID/feed ID from the first post, because we may not have site and feed objects yet
+		const siteId = posts[ 0 ].blog_ID;
+		const feedId = posts[ 0 ].site_ID;
+
 		recordTrack( 'calypso_reader_combined_card_render', {
 			blog_id: siteId,
 			feed_id: feedId,
