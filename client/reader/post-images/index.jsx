@@ -11,7 +11,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 /**
  * Internal dependencies
  */
-import stats from 'reader/stats';
+import * as stats from 'reader/stats';
 import viewport from 'lib/viewport';
 
 var PostImages = React.createClass( {

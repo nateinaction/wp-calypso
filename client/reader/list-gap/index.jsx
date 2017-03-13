@@ -8,7 +8,7 @@ import classnames from 'classnames';
  * Internal Dependencies
  */
 import FeedStreamStoreActions from 'lib/feed-stream-store/actions';
-import stats from 'reader/stats';
+import * as stats from 'reader/stats';
 
 var Gap = React.createClass( {
 

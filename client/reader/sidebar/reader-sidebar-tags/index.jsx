@@ -14,7 +14,7 @@ import ReaderSidebarTagsList from './list';
 import TagStore from 'lib/reader-tags/subscriptions';
 import TagActions from 'lib/reader-tags/actions';
 
-import stats from 'reader/stats';
+import * as stats from 'reader/stats';
 
 export class ReaderSidebarTags extends Component {
 

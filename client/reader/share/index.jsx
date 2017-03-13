@@ -11,7 +11,7 @@ import PopoverMenu from 'components/popover/menu';
 import PopoverMenuItem from 'components/popover/menu-item';
 import Gridicon from 'gridicons';
 const sitesList = require( 'lib/sites-list' )();
-import stats from 'reader/stats';
+import * as stats from 'reader/stats';
 import SitesPopover from 'components/sites-popover';
 import sections from 'sections-preload';
 
