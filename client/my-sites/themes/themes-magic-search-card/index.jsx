@@ -55,7 +55,13 @@ class ThemesMagicSearchCard extends React.Component {
 
 	onKeyDown = ( event ) => {
 		this.findTextForSuggestions( event.target.value );
-		this.refs.suggestions.handleKeyEvent( event );
+
+		//We need this logic because we are working togheter with different modules.
+		//that provide suggestions to the input depending on what is currently in input
+		const target = this.state.editedSearchElement !== '' ? 'suggestions' : 'welcome';
+		if ( this.refs[ target ] ) {
+			this.refs[ target ].handleKeyEvent( event );
+		}
 	}
 
 	onClick = ( event ) => {
@@ -191,11 +197,6 @@ class ThemesMagicSearchCard extends React.Component {
 
 		const taxonomies = getTaxonomies();
 		const taxonomiesKeys = Object.keys( taxonomies );
-		const welcomeSignProps = {
-			taxonomies: taxonomiesKeys,
-			topSearches: [],
-			suggestionsCallback: this.insertTextInInput
-		};
 
 		const searchField = (
 			<Search
@@ -225,7 +226,8 @@ class ThemesMagicSearchCard extends React.Component {
 			'has-highlight': this.state.searchIsOpen
 		} );
 
-		const welcome = ( <MagicSearchWelcome { ...welcomeSignProps } /> );
+		// Check if we want to render suggestions or welcome banner
+		const renderSuggestions = this.state.editedSearchElement !== '';
 
 		return (
 			<div className={ magicSearchClass }>
@@ -239,13 +241,22 @@ class ThemesMagicSearchCard extends React.Component {
 						/>
 					}
 				</div>
-				<Suggestions
-					ref="suggestions"
-					terms={ taxonomies }
-					input={ this.state.editedSearchElement }
-					suggest={ this.suggest }
-					welcomeSign={ welcome }
-				/>
+				{ renderSuggestions &&
+					<Suggestions
+						ref="suggestions"
+						terms={ taxonomies }
+						input={ this.state.editedSearchElement }
+						suggest={ this.suggest }
+					/>
+				}
+				{ ! renderSuggestions &&
+					<MagicSearchWelcome
+						ref="welcome"
+						taxonomies={ taxonomiesKeys }
+						topSearches={ [] }
+						suggestionsCallback={ this.insertTextInInput }
+					/>
+				}
 			</div>
 		);
 	}
