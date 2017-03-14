@@ -302,7 +302,6 @@ class Upload extends React.Component {
 			translate,
 			complete,
 			siteId,
-			selectedSite,
 			themeId,
 			upgradeJetpack,
 			backPath,
@@ -325,9 +324,7 @@ class Upload extends React.Component {
 				<QueryEligibility siteId={ siteId } />
 				<QueryActiveTheme siteId={ siteId } />
 				{ themeId && complete && <QueryTheme siteId={ siteId } themeId={ themeId } /> }
-				<ThanksModal
-					site={ selectedSite }
-					source="upload" />
+				<ThanksModal source="upload" />
 				<HeaderCake backHref={ backPath }>{ translate( 'Upload theme' ) }</HeaderCake>
 				{ upgradeJetpack && <JetpackManageErrorPage
 					template="updateJetpack"
