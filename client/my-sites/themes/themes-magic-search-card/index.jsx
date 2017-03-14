@@ -56,7 +56,7 @@ class ThemesMagicSearchCard extends React.Component {
 	onKeyDown = ( event ) => {
 		this.findTextForSuggestions( event.target.value );
 
-		//We need this logic because we are working togheter with different modules.
+		//We need this logic because we are working together with different modules.
 		//that provide suggestions to the input depending on what is currently in input
 		const target = this.state.editedSearchElement !== '' ? 'suggestions' : 'welcome';
 		if ( this.refs[ target ] ) {
