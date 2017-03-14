@@ -106,6 +106,8 @@
     "react-day-picker": "2.4.1",
     "react-docgen": "2.13.0",
     "react-dom": "15.4.0",
+    "react-facebook-login-component": "0.6.0",
+    "react-google-login-component": "0.5.2",
     "react-modal": "1.6.5",
     "react-pure-render": "1.0.2",
     "react-redux": "4.4.5",
